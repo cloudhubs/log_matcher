@@ -1,0 +1,74 @@
+Pipeline:
+2020-06-04 03:29:21,461 DEBUG - kafka_publisher.py:82 - Message context: OrgId=12154501815223414324, ClusterName="f0605ec8-43a7-4e57-61eb-dea92dba8953", LastChecked="2020-06-04T03:29:17.32247964Z"
+2020-06-04 10:50:59,761 DEBUG - kafka_publisher.py:82 - Message context: OrgId=12154501815223414324, ClusterName="5b59aa72-d054-a7b9-e2eb-90aa4bc1c878", LastChecked="2020-06-04T10:50:56.868573747Z"
+2020-06-04 10:50:00,055 DEBUG - kafka_publisher.py:82 - Message context: OrgId=12554024944080976194, ClusterName="717a4847-144b-2b36-d760-10d5f564589f", LastChecked="2020-06-04T10:49:58.359066941Z"
+2020-06-03 12:10:06,744 DEBUG - kafka_publisher.py:82 - Message context: OrgId=12554024944080976194, ClusterName="1039f06b-efe2-8a6a-e41f-da17d36ad07f", LastChecked="2020-06-03T12:10:04.101618295Z"
+2020-06-03 12:10:09,059 DEBUG - kafka_publisher.py:82 - Message context: OrgId=11610121931885598254, ClusterName="b58e27a0-7b43-13e4-f4d0-4f8e7d2d3961", LastChecked="2020-06-03T12:10:05.275786241Z"
+2020-06-04 10:45:23,053 DEBUG - kafka_publisher.py:82 - Message context: OrgId=891734235658770727, ClusterName="73d06518-135f-de4d-c25b-fdb1f9ac31be", LastChecked="2020-06-04T10:45:19.760918177Z"
+2020-06-03 12:11:11,253 INFO - kafka_publisher.py:94 - Status: Success; Topic: platform.upload.buckit; Partition: 3; Offset: 568735; LastChecked: 2020-06-03T12:11:08.8814888Z
+2020-06-03 12:11:29,355 INFO - kafka_publisher.py:94 - Status: Success; Topic: platform.upload.buckit; Partition: 5; Offset: 568736; LastChecked: 2020-06-03T12:11:26.036290438Z
+
+Aggregation:
+{"level":"info","offset":5045232,"partition":0,"topic":"ccx.ocp.results","organization":12154501815223414324,"cluster":"f0605ec8-43a7-4e57-61eb-dea92dba8953","time":"2020-06-04T11:27:46Z","message":"Stored"}
+{"level":"info","offset":5046957,"partition":0,"topic":"ccx.ocp.results","organization":12154501815223414324,"cluster":"0d9a4b33-fd68-b195-20fe-d5c469dfb8f5","time":"2020-06-04T12:01:12Z","message":"Read"}
+{"level":"info","offset":5046974,"partition":0,"topic":"ccx.ocp.results","organization":12554024944080976194,"cluster":"cb7f0231-ee9c-ded5-4a28-a8bf828e1da0","time":"2020-06-04T12:01:35Z","message":"Read"}
+{"level":"info","offset":5045233,"partition":0,"topic":"ccx.ocp.results","organization":13902045211419538098,"cluster":"14a1158a-cc42-86c6-f45c-5b4b798c31b9","time":"2020-06-04T11:27:47Z","message":"Stored"}
+{"level":"info","offset":5048774,"partition":0,"topic":"ccx.ocp.results","organization":11610121931885598254,"cluster":"b58e27a0-7b43-13e4-f4d0-4f8e7d2d3961","time":"2020-06-04T12:34:45Z","message":"Stored"}
+{"level":"info","offset":5046955,"partition":0,"topic":"ccx.ocp.results","organization":13004534720750827371,"cluster":"ec5e82da-692b-e09b-8461-6fc9dad7b8df","time":"2020-06-04T12:01:10Z","message":"Stored"}
+{"level":"info","time":"2020-06-04T11:35:48Z","message":"message sent to partition 3 at offset 556966103\n"}
+{"level":"info","time":"2020-06-04T11:36:02Z","message":"message sent to partition 1 at offset 558055408\n"}
+
+Pipeline:
+{
+20 digit, 8char-4char-4char-4char-12char:
+	20 digit:
+		12154501815223414324, [1,2]
+		12554024944080976194, [3,4]
+		11610121931885598254, [5]
+	8char-4char-4char-4char-12char:
+		f0605ec8-43a7-4e57-61eb-dea92dba8953, [1]
+		5b59aa72-d054-a7b9-e2eb-90aa4bc1c878, [2]
+		717a4847-144b-2b36-d760-10d5f564589f, [3]
+		1039f06b-efe2-8a6a-e41f-da17d36ad07f, [4]
+		b58e27a0-7b43-13e4-f4d0-4f8e7d2d3961, [5]
+18 digit, 8char-4char-4char-4char-12char:
+	18 digit:
+		891734235658770727, [6]
+	8char-4char-4char-4char-12char:
+		73d06518-135f-de4d-c25b-fdb1f9ac31be, [6]
+1 digit, 6 digit:
+	1 digit:
+		3, [7]
+		5, [8]
+	6 digit:
+		568735, [7]
+		568736, [8]
+}
+
+Aggregator:
+{
+20 digit, 8char-4char-4char-4char-12char:
+	20 digit:
+		12154501815223414324, [1,2]
+		12554024944080976194, [3]
+		13902045211419538098, [4]
+		11610121931885598254, [5]
+		13004534720750827371, [6]
+	8char-4char-4char-4char-12char:
+		f0605ec8-43a7-4e57-61eb-dea92dba8953, [1]
+		0d9a4b33-fd68-b195-20fe-d5c469dfb8f5, [2]
+		cb7f0231-ee9c-ded5-4a28-a8bf828e1da0, [3]
+		14a1158a-cc42-86c6-f45c-5b4b798c31b9, [4]
+		b58e27a0-7b43-13e4-f4d0-4f8e7d2d3961, [5]
+		ec5e82da-692b-e09b-8461-6fc9dad7b8df, [6]
+1 digit, 8 digit:
+	1 digit:
+		3, [7]
+		1, [8]
+	8 digit:
+		556966103, [7]
+		558055408, [8]
+}
+
+		
+		
