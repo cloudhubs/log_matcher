@@ -47,7 +47,13 @@ Pipeline:
 
 Aggregator:
 {
-20 digit, 8char-4char-4char-4char-12char:
+7 digit, 20 digit, 8char-4char-4char-4char-12char:
+	7 digit:
+		5045232, [1]
+		5046957, [2]
+		5046974, [3]
+		5045233, [4]
+		5046955, [5]
 	20 digit:
 		12154501815223414324, [1,2]
 		12554024944080976194, [3]
