@@ -18,6 +18,6 @@ def read_json_file(path):
 
 
 if __name__ == "__main__":
-    results = read_json_file("./test_data_aggregator.txt")
+    results = read_json_file("./test_data_output.txt")
 
     print(results)
