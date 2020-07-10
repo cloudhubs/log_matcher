@@ -1,5 +1,6 @@
 import file_reader
 
+# Definition: Class which holds all the attributes of an output JSON line
 class Output:
     signature=""
     unique_matches=0
@@ -7,10 +8,15 @@ class Output:
     unique_values=0
     total_values=0
 
+    # Definition: Converts the obejct to a String format for output to a file or to stdout
+    # @params: self the "this" object to print
+    # @return: a string with all the attributes printed in JSON format
     def __str__(self):
         return "\t{\"" + self.signature + "\": [" + str(self.unique_matches) + "," + str(self.matches) + "," + str(self.unique_values) + "," + str(self.total_values) + "]},\n"
 
 # Definition: convert intermediary data to output step
+# @params: data a JSON formatted piece of data from an intermediary file type
+# @return: a string with the calculated output data in JSON form
 def aggregate_data(data):
     output_data=[]
 
