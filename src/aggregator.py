@@ -39,6 +39,3 @@ def aggregate_data(data):
     output_string += "]"
 
     return output_string
-
-data = aggregate_data(file_reader.read_json_file("../test_data/test_data_intermediary.txt"))
-print(data)
