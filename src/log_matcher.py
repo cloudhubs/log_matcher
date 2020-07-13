@@ -29,7 +29,7 @@ def match_logs(logs_a, logs_b):
                                                             match_data_b[regex][entry][1]
                     match_data_aggregate[regex][entry][1] += match_data_b[regex][entry][1]
 
-    return 0
+    return match_data_aggregate
 
 
 # Name: get_log_data
@@ -44,24 +44,26 @@ def get_log_data(log_file):
     match_data = {}
     # go through first log file, aggregating the data on the regex
     for log_type in log_file.keys():
-        for regex in log_file[log_type].keys():
-            if regex not in match_data.keys():
-                match_data[regex] = {}
-            # get each individual value of each regex
-            for entry in log_file[log_type][regex]:
-                key = list(entry.keys())[0]
-                lines_of_code = list(entry.values())[0]
-                # check if this is a duplicate value, or new
-                if key not in match_data[regex]:
-                    match_data[regex][key] = [0, len(lines_of_code)]
-                else:
-                    match_data[regex][key][1] += len(lines_of_code)
+        for item in log_file[log_type]:
+            for regex in item.keys():
+                if regex not in match_data.keys():
+                    match_data[regex] = {}
+                # get each individual value of each regex
+                for entry in item[regex]:
+                    key = list(entry.keys())[0]
+                    lines_of_code = list(entry.values())[0]
+                    # check if this is a duplicate value, or new
+                    if key not in match_data[regex]:
+                        match_data[regex][key] = [0, len(lines_of_code)]
+                    else:
+                        match_data[regex][key][1] += len(lines_of_code)
 
     return match_data
 
 
-"""
+
 if __name__ == "__main__":
-    match_logs(file_reader.read_json_file("../test_data/test_data_aggregator.txt"),
+    data = match_logs(file_reader.read_json_file("../test_data/test_data_aggregator.txt"),
                file_reader.read_json_file("../test_data/test_data_pipeline.txt"))
-"""
+    print(data)
+
