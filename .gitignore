@@ -27,3 +27,7 @@ venv
 __pycache__
 .idea
 output.json
+=======
+# Default ignored files
+.idea
+src/__pycache__
