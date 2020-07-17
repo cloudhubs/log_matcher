@@ -18,26 +18,25 @@ def match_logs(logs_a, logs_b):
     for a_keys in list(regex_a.keys()):
         for b_keys in list(regex_b.keys()):
             # check if they share any regex
-            if not a_keys.disjoint(b_keys):
+            if not set(regex_a[a_keys]).isdisjoint(regex_b[b_keys]):
                 match_string = a_keys + "," + b_keys
                 match_data_aggregate[match_string] = {}
                 value_tracker = []  # keeps track of the values added
                 # add values from a
-                for entry in match_data_a[a_keys]:
-                    match_data_aggregate[match_string].update(entry)
-                    value_tracker.append(list(entry.keys())[0])
+                for value in list(match_data_a[a_keys].keys()):
+                    match_data_aggregate[match_string].update({value: match_data_a[a_keys][value]})
+                    value_tracker.append(value)
 
                 # add values from b, matching if possible
-                for entry in match_data_b[b_keys]:
+                for value in list(match_data_b[b_keys].keys()):
                     # check if there's a match
-                    value = list(entry.keys())[0]
                     if value in value_tracker:
                         # match
                         match_data_aggregate[match_string][value][0] = match_data_aggregate[match_string][value][1] * \
-                                                                       entry[1]
-                        match_data_aggregate[match_string][value][1] += entry[1]
+                                                                       match_data_b[b_keys][value][1]
+                        match_data_aggregate[match_string][value][1] += match_data_b[b_keys][value][1]
                     else:
-                        match_data_aggregate[match_string].update(entry)
+                        match_data_aggregate[match_string].update({value: match_data_b[b_keys][value]})
 
     return match_data_aggregate
 
@@ -51,43 +50,39 @@ def match_logs(logs_a, logs_b):
 #             seen, individual variables, group them by their regular expression, and
 #             list their occurrences, as well as available opening for matches
 def get_log_data(log_file):
-    match_data = {}
+    log_data = {}
     # go through first log file, aggregating the data on the regex
     for log_type in log_file.keys():
-        key_index = 0
-        key_names = log_type.split(",")
-        for item in log_file[log_type]:
-            for regex in item.keys():
-                if key_names[key_index] not in match_data.keys():
-                    match_data[key_names[key_index]] = {}
-                # get each individual value of each regex
-                for entry in item[regex]:
-                    key = list(entry.keys())[0]
-                    lines_of_code = list(entry.values())[0]
-                    # check if this is a duplicate value, or new
-                    if key not in match_data[key_names[key_index]]:
-                        match_data[key_names[key_index]][key][0] = [0, len(lines_of_code)]
+        for key_name in list(log_file[log_type].keys()):
+            if key_name not in log_data:
+                log_data[key_name] = {}
+            for regex in log_file[log_type][key_name]:
+                for item in log_file[log_type][key_name][regex]:
+                    value = list(item.keys())[0]
+                    lines_of_code = len(item[value])
+
+                    # check if value already exists in key domain
+                    if value in log_data[key_name]:
+                        # update line count
+                        log_data[key_name][value][1] += lines_of_code
                     else:
-                        match_data[key_names[key_index]][key][1] += len(lines_of_code)
-        key_index += 1
+                        # add log entry
+                        log_data[key_name][value] = [0, lines_of_code]
 
-    return match_data
+    return log_data
 
-# returns the 
+
+# returns the mapping of keys to their possible regex representations
 def get_key_regex(log_file):
     key_data = {}
 
     for log_type in log_file.keys():
-        key_index = 0
-        key_names = log_type.split(",")
-        for item in log_file[log_type]:
-            if key_names[key_index] not in key_data:
-                key_data[key_names[key_index]] = []
-            # add the mapping of the regex to the key
-            key_data[key_names[key_index]].append(list(log_file[log_type][item].keys())[0])
-            key_index += 1
+        for key_id in list(log_file[log_type].keys()):
+            if key_id not in key_data:
+                # new key name
+                key_data[key_id] = []
+            key_data[key_id].extend((log_file[log_type][key_id].keys()))
 
-    print(key_data)
     return key_data
 
 
