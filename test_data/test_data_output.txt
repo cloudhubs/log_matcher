@@ -1,20 +1,20 @@
 [
-	{"organization,OrgID": {
+	{"OrgId,organization": {
 		"Unique Matches": 3,
 		"Total Matches": 7,
 		"Unique Values": 6,
 		"Total Values": 12
-	},
-	{"cluster,ClusterName": {
+	}},
+	{"ClusterName,cluster": {
 		"Unique Matches": 2,
 		"Total Matches": 2,
 		"Unique Values": 10,
 		"Total Values": 12
-	},
-	{"partition,Partition": {
+	}},
+	{"Partition,partition": {
 		"Unique Matches": 1,
 		"Total Matches": 1,
 		"Unique Values": 3,
 		"Total Values": 4
-	}
+	}}
 ]
