@@ -16,8 +16,3 @@ def read_json_file(path):
 
     return result_list
 
-
-if __name__ == "__main__":
-    results = read_json_file("../test_data/test_data_intermediary.txt")
-
-    print(results)

@@ -1,4 +1,5 @@
 from src import file_reader
+import json
 
 
 # Name: match_logs
@@ -89,4 +90,6 @@ def get_key_regex(log_file):
 if __name__ == "__main__":
     data = match_logs(file_reader.read_json_file("../test_data/test_data_aggregator.txt"),
                       file_reader.read_json_file("../test_data/test_data_pipeline.txt"))
+    with open('sample_out.txt', 'w') as f:
+        json.dump(data,f)
     print(data)
