@@ -1,6 +1,7 @@
 import re
 import json
 
+
 class BigObj:
     line_type = []
     regex_items = []
@@ -11,6 +12,7 @@ class Regex:
     values = []
     line_numbers = []
 
+
 # Verify if a line is in JSON format
 # @params myjson: the object to verify json form of
 # @return boolean indicating whether the object can be parsed into json
@@ -20,6 +22,7 @@ def is_json(myjson):
     except ValueError as e:
         return False
     return True
+
 
 # Extracts lines from log file in json format
 # @params pipeline_path: the file to extract the logs from
@@ -33,6 +36,7 @@ def get_log_list(file_path):
         log_list.append(json.loads(line))
 
     return log_list
+
 
 # @description iterates through all of the logs, generating regex strings for all the values
 # @param file_path: a file_path to the log items in JSON form
@@ -99,12 +103,13 @@ def generate_big_obj(file_path):
 
             objects.append(item)
 
-            #print(item.line_type)
-            #for reg in item.regex_items:
+            # print(item.line_type)
+            # for reg in item.regex_items:
             #    print("\t" + reg.regex)
             #    for k in range(0, len(reg.values)):
             #        print("\t\t", reg.values[k], reg.line_numbers[k])
     return objects
+
 
 # @description generates a list of all the different regex values in a line
 # @param log_item: a dict type object to generate the regex strings for while ignoring time, message, and -1 values
