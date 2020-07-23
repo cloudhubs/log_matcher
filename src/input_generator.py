@@ -122,5 +122,5 @@ for value in obj:
                 list = list[0:len(list)-1] + "]"
                 obj[value][val][va][v] = list
 
-with open("../test_data/testOutput.txt", "w") as file:
+with open("../test_data/test_output.txt", "w") as file:
     file.write(json.dumps(obj, indent=4))
