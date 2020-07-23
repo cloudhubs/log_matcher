@@ -118,7 +118,7 @@ for value in obj:
             list += str(num) + ","
         list = list[0:len(list)-1] + "]"
         print(list)
-        obj[value][val] = list
+        obj[value][val] = list 
 
 with open("../test_data/pipelineout.txt") as file:
     file.write(json.dumps(obj))
