@@ -111,14 +111,16 @@ def get_regex(value):
 
 
 obj = generate_big_obj("../test_data/pipelineout.txt")
-for value in obj:
-    for val in value:
-        list = "["
-        for num in val:
-            list += str(num) + ","
-        list = list[0:len(list)-1] + "]"
-        print(list)
-        obj[value][val] = list 
 
-with open("../test_data/pipelineout.txt") as file:
-    file.write(json.dumps(obj))
+for value in obj:
+    for val in obj[value]:
+        for va in obj[value][val]:
+            for v in obj[value][val][va]:
+                list = "["
+                for num in obj[value][val][va][v]:
+                    list += str(num) + ","
+                list = list[0:len(list)-1] + "]"
+                obj[value][val][va][v] = list
+
+with open("../test_data/testOutput.txt", "w") as file:
+    file.write(json.dumps(obj, indent=4))
