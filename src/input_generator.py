@@ -76,7 +76,7 @@ def get_line_type(log_item):
     line_values = []
     # iterate through each log item key
     for item, value in log_item.items():
-        if "time" not in item and "message" not in item and "warning" not in item and "error" not in item and "-1" not in str(value):
+        if "time" not in item and "message" not in item and "warning" not in item and "error" not in item and value != -1:
             reg = get_regex(str(value))
             if len(reg) > 0:
                 regex_vals.append(reg)
@@ -110,10 +110,10 @@ def get_regex(value):
     return line
 
 
-obj = generate_big_obj("../test_data/pipelineout.txt")
+obj = generate_big_obj("../test_data/aggregatorout.txt")
 
 # add this block for more readable output
-"""
+
 for value in obj:
     for val in obj[value]:
         for va in obj[value][val]:
@@ -122,7 +122,7 @@ for value in obj:
                 for num in obj[value][val][va][v]:
                     list += str(num) + ","
                 list = list[0:len(list)-1] + "]"
-                obj[value][val][va][v] = list"""
+                obj[value][val][va][v] = list
 
 with open("../test_data/test_output.txt", "w") as file:
     file.write(json.dumps(obj, indent=3))
