@@ -42,26 +42,35 @@ def generate_big_obj(file_path):
         str_line_type = ""
         for type in line_type:
             str_line_type += type + ","
-        str_line_type = str_line_type[0:len(str_line_type)-1]
+        str_line_type = str_line_type[0:len(str_line_type) - 1]
 
         # add the values and line numbers to the regex if the line-type has been found
         if str_line_type in big_dictionary:
             for j in range(0, len(regex)):
                 if regex[j] not in big_dictionary[str_line_type][line_type[j]]:
-                    big_dictionary[str_line_type][line_type[j]][regex[j]] = {}
-                    big_dictionary[str_line_type][line_type[j]][regex[j]][line_values[j]] = [i]
+                    big_dictionary[str_line_type][line_type[j]][regex[j]] = []
+                    big_dictionary[str_line_type][line_type[j]][regex[j]].append({line_values[j]: [i]})
                 else:
-                    if line_values[j] in big_dictionary[str_line_type][line_type[j]][regex[j]]:
-                        big_dictionary[str_line_type][line_type[j]][regex[j]][line_values[j]].append(i)
-                    else:
-                        big_dictionary[str_line_type][line_type[j]][regex[j]][line_values[j]] = [i]
+                    found = False
+                    for k in range(len(big_dictionary[str_line_type][line_type[j]][regex[j]])):
+                        if line_values[j] in big_dictionary[str_line_type][line_type[j]][regex[j]][k]:
+                            found = True
+                            big_dictionary[str_line_type][line_type[j]][regex[j]][k][line_values[j]].append(i)
+                    # if line_values[j] in big_dictionary[str_line_type][line_type[j]][regex[j]]:
+                    #    big_dictionary[str_line_type][line_type[j]][regex[j]][line_values[j]].append(i)
+                    # else:
+                    #    big_dictionary[str_line_type][line_type[j]][regex[j]][line_values[j]] = [i]
+                    if not found:
+                        big_dictionary[str_line_type][line_type[j]][regex[j]].append({line_values[j]: [i]})
         # create the regex dictionaries
         else:
             big_dictionary[str_line_type] = {}
             for j in range(0, len(regex)):
                 big_dictionary[str_line_type][line_type[j]] = {}
-                big_dictionary[str_line_type][line_type[j]][regex[j]] = {}
-                big_dictionary[str_line_type][line_type[j]][regex[j]][line_values[j]] = [i]
+                # big_dictionary[str_line_type][line_type[j]][regex[j]] = {}
+                # big_dictionary[str_line_type][line_type[j]][regex[j]][line_values[j]] = [i]
+                big_dictionary[str_line_type][line_type[j]][regex[j]] = []
+                big_dictionary[str_line_type][line_type[j]][regex[j]].append({line_values[j]: [i]})
 
     return big_dictionary
 
@@ -110,7 +119,7 @@ def get_regex(value):
     return line
 
 
-obj = generate_big_obj("../test_data/aggregatorout.txt")
+obj = generate_big_obj("../test_data/pipelineout.txt")
 
 # add this block for more readable output
 """
