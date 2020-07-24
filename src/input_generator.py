@@ -111,7 +111,6 @@ def get_regex(value):
 
 
 obj = generate_big_obj("../test_data/pipelineout.txt")
-
 # add this block for more readable output
 """
 for value in obj:
