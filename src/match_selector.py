@@ -4,6 +4,7 @@ MATCH_WEIGHT = 1.0
 VALUE_WEIGHT = 1.0
 GLOBAL_WEIGHT = 1.0
 
+
 class Match:
     def __init__(self, name, unique_matches, total_matches, unique_values, total_values):
         self.name = name
@@ -46,7 +47,7 @@ def get_primary_match(match_output):
 
     # assign scores
     for match in match_objects:
-        match.score = score(match,global_value_count)
+        match.score = score(match, global_value_count)
 
     # get best score
     match_objects.sort(key=lambda s: s.score, reverse=True)
