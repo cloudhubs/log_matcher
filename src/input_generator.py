@@ -117,21 +117,3 @@ def get_regex(value):
     if count > 0:
         line += (str(count) + "c")
     return line
-
-
-obj = generate_big_obj("../test_data/pipelineout.txt")
-
-# add this block for more readable output
-"""
-for value in obj:
-    for val in obj[value]:
-        for va in obj[value][val]:
-            for v in obj[value][val][va]:
-                list = "["
-                for num in obj[value][val][va][v]:
-                    list += str(num) + ","
-                list = list[0:len(list)-1] + "]"
-                obj[value][val][va][v] = list"""
-
-with open("../test_data/test_output.txt", "w") as file:
-    file.write(json.dumps(obj, indent=3))

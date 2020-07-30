@@ -1,5 +1,5 @@
 from src import file_reader
-
+import json
 
 # Definition: convert intermediary data to output step
 # @params: data a JSON formatted piece of data from an intermediary file type
@@ -25,7 +25,3 @@ def aggregate_data(data):
         output_data.append(dict)
 
     return output_data
-
-
-if __name__ == "__main__":
-    print(aggregate_data(file_reader.read_json_file("../test_data/test_data_matching.txt")))
