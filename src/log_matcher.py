@@ -73,7 +73,10 @@ def get_log_data(log_file):
     return log_data
 
 
-# returns the mapping of keys to their possible regex representations
+# Name: Get Key Regex
+# Output: A Dictionary mapping a variable's key to the possible regex values it's variables can take on
+# Input: The expected output of a log file after simple clustering and variable extraction
+# Description: Finds the regex values associated with each key and stores them in an easy to access dictionary.
 def get_key_regex(log_file):
     key_data = {}
 
@@ -85,11 +88,3 @@ def get_key_regex(log_file):
             key_data[key_id].extend((log_file[log_type][key_id].keys()))
 
     return key_data
-
-
-if __name__ == "__main__":
-    data = match_logs(file_reader.read_json_file("../test_data/test_data_aggregator.txt"),
-                      file_reader.read_json_file("../test_data/test_data_pipeline.txt"))
-    with open('sample_out.txt', 'w') as f:
-        json.dump(data,f)
-    print(data)
